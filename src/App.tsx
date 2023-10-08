@@ -1,12 +1,14 @@
 import styled, { createGlobalStyle } from "styled-components";
 import Header from "./header-footer/header";
 import GeorgianFont from "./bpg_glaho.ttf";
+import MainPage from "./mainpage/mainpage";
 
 function App() {
   return (
     <>
       <GlobalStyles />
       <Header />
+      <MainPage />
     </>
   );
 }

@@ -4,6 +4,7 @@ import burgerImg from "../assets/bars-solid.svg";
 import logo from "../assets/logo-1.png";
 import { useState } from "react";
 
+
 function Header() {
   const [open, setOpen] = useState(false);
 
@@ -18,7 +19,7 @@ function Header() {
               setOpen((prevIsOpen) => !prevIsOpen);
             }}
           />
-          <Nav style={open ? { display: "inline" } : { display: "none" }}>
+          <Nav  primary={open.toString()} >
             <SearchBar type="text" />
             <UL>
               <Li>
@@ -65,11 +66,11 @@ const SearchBar = styled.input`
   background-repeat: no-repeat;
   background-position: center right 12px;
   color: #fff;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 1100px) {
     position: absolute;
     top: 0;
-    right: 20px;
-    width: 500px;
+    right: 0;
+    width: 100%;
   }
 `;
 const HeaderBottom = styled.div`
@@ -102,12 +103,13 @@ const Logo = styled.img`
     height: 60px;
   }
 `;
-const Nav = styled.nav`
+const Nav = styled.nav<{ primary: string }>`
   background-color: green;
   position: absolute;
   left: 0;
   top: 70px;
   width: 100%;
+  display: ${(props) => (props.primary === "true" ? "inLine" : "none")};
   @media only screen and (min-width: 768px) {
     top: 120px;
   }
@@ -115,6 +117,7 @@ const Nav = styled.nav`
     position: unset;
     padding: 0;
     background-color: unset;
+    display: inline;
   }
 `;
 const UL = styled.ul`
@@ -140,4 +143,7 @@ const P = styled.p`
   line-height: 20px;
   font-weight: 600;
   text-align: center;
+  @media only screen and (min-width: 1100px){
+    font-size: 15px;
+  }
 `;
