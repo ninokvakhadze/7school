@@ -32,6 +32,14 @@ const Title = styled.p`
 const Containers = styled.div`
   display: grid;
   justify-content: center;
+  @media only screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+    justify-items: center; // Center horizontally
+    align-items: center;
+  }
 
   @media only screen and (min-width: 1040px) {
     display: grid;
@@ -55,8 +63,8 @@ const Container = styled.div`
   font-weight: bold;
 
   @media only screen and (min-width: 768px) {
-    width: 700px;
-    height: 400px;
+    width: 300px;
+    height: 200px;
   }
 
   @media only screen and (min-width: 1040px) {

@@ -4,6 +4,7 @@ import  { useState, useEffect } from 'react';
 import image1 from "../assets/024ub5e.jpg";
 import image2 from "../assets/2iTeLsR.jpg";
 import image3 from "../assets/RmuR3Dn.jpg";
+import Post from "../posts/post";
 
 const images = [
    image1,
@@ -23,6 +24,7 @@ const MainPage = () => {
   return (
     <>
       <img style={{width: "100%", height: "500px"}} src={images[currentImageIndex]}/>
+      <Post/>
     </>
   );
 };

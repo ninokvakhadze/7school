@@ -3,7 +3,7 @@ import Header from "./header-footer/header";
 import GeorgianFont from "./bpg_glaho.ttf";
 import MainPage from "./mainpage/mainpage";
 import Footer from "./header-footer/footer";
-import Post from "./posts/post";
+
 
 function App() {
   return (
@@ -11,7 +11,6 @@ function App() {
       <GlobalStyles />
       <Header />
       <MainPage />
-      <Post />
       <Footer />
     </>
   );
