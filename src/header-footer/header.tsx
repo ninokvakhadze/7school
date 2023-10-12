@@ -2,11 +2,12 @@ import styled from "styled-components";
 import Search from "../assets/magnifying-glass-solid.svg";
 import burgerImg from "../assets/bars-solid.svg";
 import logo from "../assets/logo-1.png";
+import arrow from "../assets/icon-chevron.svg";
 import { useState } from "react";
-
 
 function Header() {
   const [open, setOpen] = useState(false);
+  const [titleShow, setTitleShow] = useState(0);
 
   return (
     <>
@@ -19,29 +20,106 @@ function Header() {
               setOpen((prevIsOpen) => !prevIsOpen);
             }}
           />
-          <Nav  primary={open.toString()} >
+          <Nav primary={open.toString()}>
             <SearchBar type="text" />
             <UL>
-              <Li>
-                <P>სიახლეები</P>
+              <Li
+                onClick={() => {
+                  setTitleShow(titleShow === 1 ? 0 : 1);
+                }}
+              >
+                <TitleDiv>
+                  <P color={titleShow === 1}>სიახლეები</P>
+                  <Arrow rotate={titleShow === null} src={arrow} />
+                </TitleDiv>
               </Li>
-              <Li>
-                <P>სკოლა</P>
+              <Li onClick={() => {
+                  setTitleShow(titleShow === 2 ? 0 : 2);
+                }}>
+                <TitleDiv>
+                  <P color={titleShow === 2}>სკოლა</P>
+                  <Arrow src={arrow} rotate={titleShow === 2}/>
+                </TitleDiv>
+                <MiniMenu show={titleShow === 2}>
+                  <SecondTitleDiv>
+                    <SecondTitle>მისია, ხედვა, ღირებებულები</SecondTitle>
+                    <Arrow2 src={arrow} />
+                  </SecondTitleDiv>
+                  <SecondTitleDiv>
+                    <SecondTitle>სტრუქტურა</SecondTitle>
+                    <Arrow2 src={arrow} />
+                  </SecondTitleDiv>
+                </MiniMenu>
               </Li>
-              <Li>
-                <P>თანამშრომლები</P>
+              <Li onClick={() => {
+                  setTitleShow(titleShow === 3 ? 0 : 3);
+                }}>
+                <TitleDiv>
+                  <P color={titleShow === 3}>თანამშრომლები</P>
+                  <Arrow src={arrow} rotate={titleShow === null}/>
+                </TitleDiv>
               </Li>
-              <Li>
-                <P>მოსწავლეები</P>
+              <Li onClick={() => {
+                  setTitleShow(titleShow === 4 ? 0 : 4);
+                }}>
+                <TitleDiv>
+                  <P color={titleShow === 4}>მოსწავლეები</P>
+                  <Arrow src={arrow} rotate={titleShow === 4}/>
+                </TitleDiv>
+                <MiniMenu show={titleShow === 4}>
+                  <SecondTitleDiv>
+                    <SecondTitle>პროექტები</SecondTitle>
+                    <Arrow2 src={arrow} />
+                  </SecondTitleDiv>
+                  <SecondTitleDiv>
+                    <SecondTitle>კვლევები</SecondTitle>
+                    <Arrow2 src={arrow} />
+                  </SecondTitleDiv>
+                </MiniMenu>
               </Li>
-              <Li>
-                <P>შინაგანაწესი</P>
+              <Li onClick={() => {
+                  setTitleShow(titleShow === 5 ? 0 : 5);
+                }}>
+                <TitleDiv>
+                  <P color={titleShow === 5}>შინაგანაწესი</P>
+                  <Arrow src={arrow} rotate={titleShow === 5} />
+                </TitleDiv>
+                <MiniMenu show={titleShow === 5}>
+                  <SecondTitleDiv>
+                    <SecondTitle>პროექტები</SecondTitle>
+                    <Arrow2 src={arrow} />
+                  </SecondTitleDiv>
+                  <SecondTitleDiv>
+                    <SecondTitle>კვლევები</SecondTitle>
+                    <Arrow2 src={arrow} />
+                  </SecondTitleDiv>
+                </MiniMenu>
               </Li>
-              <Li>
-                <P>საჯარო ინფორმაცია</P>
+              <Li onClick={() => {
+                  setTitleShow(titleShow === 6 ? 0 : 6);
+                }}>
+                <TitleDiv>
+                  <P color={titleShow === 6}>საჯარო ინფორმაცია</P>
+                  <Arrow src={arrow} rotate={titleShow === 6} />
+                </TitleDiv>
+                <MiniMenu show={titleShow === 6}>
+                  <SecondTitleDiv>
+                    <SecondTitle>პროექტები</SecondTitle>
+                    <Arrow2 src={arrow} />
+                  </SecondTitleDiv>
+                  <SecondTitleDiv>
+                    <SecondTitle>კვლევები</SecondTitle>
+                    <Arrow2 src={arrow} />
+                  </SecondTitleDiv>
+                </MiniMenu>
               </Li>
-              <Li>
-                <P>კონტაქტი</P>
+              <Li onClick={() => {
+                  setTitleShow(7);
+                }}>
+                <TitleDiv>
+                  <P color={titleShow === 7}>კონტაქტი</P>
+                  <Arrow src={arrow} rotate={titleShow === 8}/>
+                </TitleDiv>
               </Li>
             </UL>
           </Nav>
@@ -55,16 +133,15 @@ export default Header;
 
 const WebPageHeader = styled.header``;
 const SearchBar = styled.input`
-  /* position: fixed; */
   width: 100%;
   outline: none;
   border: none;
-  padding: 7px 10px;
-  background-color: red;
+  padding: 7px 20px;
+  background-color: #8b0909;
   background-image: url(${Search});
   background-size: 20px;
   background-repeat: no-repeat;
-  background-position: center right 12px;
+  background-position: center right 20px;
   color: #fff;
   @media only screen and (min-width: 1100px) {
     position: absolute;
@@ -74,8 +151,8 @@ const SearchBar = styled.input`
   }
 `;
 const HeaderBottom = styled.div`
-  padding: 15px 10px;
-  background-color: blue;
+  padding: 15px 20px;
+  background-color: black;
   display: flex;
   justify-content: space-between;
   @media only screen and (min-width: 768px) {
@@ -104,7 +181,7 @@ const Logo = styled.img`
   }
 `;
 const Nav = styled.nav<{ primary: string }>`
-  background-color: green;
+  background-color: black;
   position: absolute;
   left: 0;
   top: 70px;
@@ -125,7 +202,7 @@ const UL = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding: 40px;
+  padding: 40px 20px;
   @media only screen and (min-width: 1100px) {
     flex-direction: row;
     gap: 20px;
@@ -134,8 +211,22 @@ const UL = styled.ul`
     margin-top: 20px;
   }
 `;
-const Li = styled.li``;
-const P = styled.p`
+const Li = styled.li`
+  border-bottom: 1px solid gray;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  @media only screen and (min-width: 1100px) {
+    border-bottom: none;
+    padding-bottom: 0px;
+  }
+`;
+const TitleDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const P = styled.h2<{color: boolean}>`
   text-align: center;
   font-family: bpg_ghalo;
   color: #ffffff;
@@ -143,7 +234,48 @@ const P = styled.p`
   line-height: 20px;
   font-weight: 600;
   text-align: center;
-  @media only screen and (min-width: 1100px){
+  opacity: ${(props) => (props.color ? "1" : "0.85")};
+  @media only screen and (min-width: 1100px) {
     font-size: 15px;
+  }
+`;
+const Arrow = styled.img<{ rotate: boolean }>`
+  width: 8px;
+  height: 8px;
+  margin-top: 8px;
+  transform: ${(props) => (props.rotate ? "rotate(90deg)" : "")};
+  @media only screen and (min-width: 1100px) {
+    display: none;
+  }
+`;
+const Arrow2 = styled.img`
+  width: 8px;
+  height: 8px;
+  margin-top: 8px;
+  @media only screen and (min-width: 1100px) {
+    display: none;
+  }
+`;
+const MiniMenu = styled.div<{ show: boolean }>`
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px 20px;
+  display: ${(props) => (props.show? "flex" : "none")};
+  @media only screen and (min-width: 1100px) {
+    display: none;
+  }
+`;
+const SecondTitleDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  @media only screen and (min-width: 1100px) {
+    display: none;
+  }
+`;
+const SecondTitle = styled.h3`
+  color: White;
+  font-size: 14px;
+  @media only screen and (min-width: 1100px) {
+    display: none;
   }
 `;
