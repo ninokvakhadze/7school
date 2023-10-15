@@ -1,15 +1,12 @@
-import React from "react";
+// import React from "react";
 import styled from "styled-components";
 import tenisi from "../assets/tenisi.jpg";
 import kalatburti from "../assets/kalatburti.jpg";
-const videoURL = "https://vimeo.com/8a68007e-ddca-4631-9cd4-940ab01fce45";
 
 function Post() {
   return (
     <Maindiv>
-      <Video controls>
-        <source src={videoURL} type="video/webm" />
-      </Video>
+     <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fesida.gov.ge%2Fvideos%2F505864951503032%2F&show_text=false&width=560&t=0" width="560" height="314"  scrolling="no"  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" ></iframe>
       <Title>INFO & EVENTS</Title>
       <Containers>
         <Container color="#ded7d7">
@@ -51,18 +48,7 @@ function Post() {
 
 export default Post;
 
-const Video = styled.video`
-  display: flex; /* Center horizontally and vertically */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  margin-top: 50px;
-  width: 350px;
-  @media only screen and (min-width: 768px) {
-    width: 730px;
-  }
-  @media only screen and (min-width: 1040px) {
-  }
-`;
+
 
 const Maindiv = styled.div`
   display: flex; /* Center horizontally and vertically */
