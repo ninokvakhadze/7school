@@ -2,10 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import tenisi from "../assets/tenisi.jpg";
 import kalatburti from "../assets/kalatburti.jpg";
+const videoURL = "https://vimeo.com/8a68007e-ddca-4631-9cd4-940ab01fce45";
 
 function Post() {
   return (
     <Maindiv>
+      <Video controls>
+        <source src={videoURL} type="video/webm" />
+      </Video>
       <Title>INFO & EVENTS</Title>
       <Containers>
         <Container color="#ded7d7">
@@ -40,7 +44,6 @@ function Post() {
       <Newscontainer>
         <News></News>
         <News></News>
-        <News></News>
       </Newscontainer>
     </Maindiv>
   );
@@ -48,7 +51,25 @@ function Post() {
 
 export default Post;
 
-const Maindiv = styled.div``;
+const Video = styled.video`
+  display: flex; /* Center horizontally and vertically */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin-top: 50px;
+  width: 350px;
+  @media only screen and (min-width: 768px) {
+    width: 730px;
+  }
+  @media only screen and (min-width: 1040px) {
+  }
+`;
+
+const Maindiv = styled.div`
+  display: flex; /* Center horizontally and vertically */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-direction: column;
+`;
 
 const ImageWrapper = styled.div`
   width: 100%;
@@ -80,48 +101,53 @@ const Title = styled.p`
 
 const Containers = styled.div`
   display: grid;
-  justify-content: center;
+  grid-template-columns: auto;
   @media only screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    justify-content: center;
-    justify-items: center; // Center horizontally
-    align-items: center;
+    grid-template-columns: auto auto;
+    gap: 10px;
   }
 
   @media only screen and (min-width: 1040px) {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    justify-content: center;
-    justify-items: center; // Center horizontally
-    align-items: center;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    gap: 50px;
   }
 `;
 
 const Container = styled.div`
   background-color: ${(props) => props.color || "gray"};
-  width: 300px;
-  height: 200px;
+  width: 350px;
+  height: 500px;
   margin: 10px;
 
-  /* position: relative; */
-
   @media only screen and (min-width: 768px) {
-    width: 300px;
-    height: 200px;
+    width: 350px;
+    height: 450px;
   }
 
   @media only screen and (min-width: 1040px) {
-    width: 330px;
-    height: 400px;
+    width: 350px;
+    height: 450px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    width: 400px;
+    height: 500px;
   }
 `;
 const Newscontainer = styled.div`
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: auto;
   gap: 70px;
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: auto auto;
+  }
+  @media only screen and (min-width: 1040px) {
+    grid-template-columns: auto auto auto;
+  }
 `;
 
 const Newstitle = styled.p`
