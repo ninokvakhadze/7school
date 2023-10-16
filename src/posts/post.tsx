@@ -6,7 +6,13 @@ import kalatburti from "../assets/kalatburti.jpg";
 function Post() {
   return (
     <Maindiv>
-     <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fesida.gov.ge%2Fvideos%2F505864951503032%2F&show_text=false&width=560&t=0" width="560" height="314"  scrolling="no"  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" ></iframe>
+      <Iframe
+        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fesida.gov.ge%2Fvideos%2F505864951503032%2F&show_text=false&width=560&t=0"
+        width="560"
+        height="314"
+        scrolling="no"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+      ></Iframe>
       <Title>INFO & EVENTS</Title>
       <Containers>
         <Container color="#ded7d7">
@@ -48,13 +54,28 @@ function Post() {
 
 export default Post;
 
+const Iframe = styled.iframe`
+  display: flex;
+  justify-content: center;
+  width: 350px;
+  height: 300px;
+  border: none;
+  margin-top: 30px;
+  @media only screen and (min-width: 768px) {
+    width: 700px;
+  }
 
-
+  @media only screen and (min-width: 1040px) {
+    width: 1000px;
+    height: 600px;
+  }
+`;
 const Maindiv = styled.div`
   display: flex; /* Center horizontally and vertically */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   flex-direction: column;
+  background-color: #d0cece;
 `;
 
 const ImageWrapper = styled.div`
@@ -81,10 +102,11 @@ const Title = styled.p`
   font-size: 25px;
   font-weight: 800;
   color: red;
-  margin-top: 50px;
   margin-bottom: 50px;
+  @media only screen and (min-width: 768px) {
+  }
+  margin-top: 50px;
 `;
-
 const Containers = styled.div`
   display: grid;
   grid-template-columns: auto;
