@@ -34,12 +34,14 @@ function Header() {
                 </TitleDiv>
                 <Hoverline></Hoverline>
               </Li>
-              <Li onClick={() => {
+              <Li
+                onClick={() => {
                   setTitleShow(titleShow === 2 ? 0 : 2);
-                }}>
+                }}
+              >
                 <TitleDiv>
                   <P color={titleShow === 2}>სკოლა</P>
-                  <Arrow src={arrow} rotate={titleShow === 2}/>
+                  <Arrow src={arrow} rotate={titleShow === 2} />
                 </TitleDiv>
                 <Hoverline></Hoverline>
                 <MiniMenu show={titleShow === 2}>
@@ -53,48 +55,58 @@ function Header() {
                   </SecondTitleDiv>
                 </MiniMenu>
               </Li>
-              <Li onClick={() => {
+              <Li
+                onClick={() => {
                   setTitleShow(titleShow === 3 ? 0 : 3);
-                }}>
+                }}
+              >
                 <TitleDiv>
                   <P color={titleShow === 3}>თანამშრომლები</P>
-                  <Arrow src={arrow} rotate={titleShow === null}/>
+                  <Arrow src={arrow} rotate={titleShow === null} />
                 </TitleDiv>
                 <Hoverline></Hoverline>
               </Li>
-              <Li onClick={() => {
+              <Li
+                onClick={() => {
                   setTitleShow(titleShow === 4 ? 0 : 4);
-                }}>
+                }}
+              >
                 <TitleDiv>
                   <P color={titleShow === 4}>მოსწავლეები</P>
-                  <Arrow src={arrow} rotate={titleShow === null}/>
+                  <Arrow src={arrow} rotate={titleShow === null} />
                 </TitleDiv>
                 <Hoverline></Hoverline>
               </Li>
-              <Li onClick={() => {
+              <Li
+                onClick={() => {
                   setTitleShow(titleShow === 5 ? 0 : 5);
-                }}>
+                }}
+              >
                 <TitleDiv>
                   <P color={titleShow === 5}>შინაგანაწესი</P>
                   <Arrow src={arrow} rotate={titleShow === null} />
                 </TitleDiv>
                 <Hoverline></Hoverline>
               </Li>
-              <Li onClick={() => {
+              <Li
+                onClick={() => {
                   setTitleShow(titleShow === 6 ? 0 : 6);
-                }}>
+                }}
+              >
                 <TitleDiv>
                   <P color={titleShow === 6}>საჯარო ინფორმაცია</P>
                   <Arrow src={arrow} rotate={titleShow === null} />
                 </TitleDiv>
                 <Hoverline></Hoverline>
               </Li>
-              <Li onClick={() => {
+              <Li
+                onClick={() => {
                   setTitleShow(7);
-                }}>
+                }}
+              >
                 <TitleDiv>
                   <P color={titleShow === 7}>კონტაქტი</P>
-                  <Arrow src={arrow} rotate={titleShow === 8}/>
+                  <Arrow src={arrow} rotate={titleShow === 8} />
                 </TitleDiv>
                 <Hoverline></Hoverline>
               </Li>
@@ -133,10 +145,15 @@ const HeaderBottom = styled.div`
   display: flex;
   justify-content: space-between;
   @media only screen and (min-width: 768px) {
-    padding: 50px 20px;
+    padding: 30px 20px;
+  }
+  @media only screen and (min-width: 1100px) {
+    padding: 40px 20px;
     padding-bottom: 0px;
   }
-`;
+  `
+;
+
 const BurgerBar = styled.img`
   width: 20px;
   height: 20px;
@@ -190,12 +207,12 @@ const UL = styled.ul`
   }
 `;
 const Hoverline = styled.div`
-    display: none;
+  display: none;
   @media only screen and (min-width: 1100px) {
     height: 6px;
     background-color: #8b0909;
   }
-`
+`;
 const Li = styled.li`
   border-bottom: 1px solid gray;
   padding-bottom: 30px;
@@ -208,15 +225,29 @@ const Li = styled.li`
     padding-bottom: 0px;
     height: 60px;
     &:hover ${Hoverline} {
-      display:inline;
+      display: inline;
       margin-top: 15px;
-  }
+    }
   }
 `;
 const TitleDiv = styled.div`
   display: flex;
   justify-content: space-between;
-`;
+`
+;
+const MiniMenu = styled.div<{ show: boolean }>`
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px 20px;
+  display: ${(props) => (props.show? "flex" : "none")};
+  @media only screen and (min-width: 1100px) {
+    position: absolute;
+    background-color: black;
+    top: 60px;
+    left: -40px;
+  }
+  `
+;
 const P = styled.h2<{color: boolean}>`
   text-align: center;
   font-family: bpg_ghalo;
@@ -228,8 +259,12 @@ const P = styled.h2<{color: boolean}>`
   opacity: ${(props) => (props.color ? "1" : "0.85")};
   @media only screen and (min-width: 1100px) {
     font-size: 15px;
+    &:hover + ${MiniMenu}{
+      display: inline;
+  }
 }
-`;
+`
+;
 const Arrow = styled.img<{ rotate: boolean }>`
   width: 8px;
   height: 8px;
@@ -247,26 +282,11 @@ const Arrow2 = styled.img`
     display: none;
   }
 `;
-const MiniMenu = styled.div<{ show: boolean }>`
-  flex-direction: column;
-  gap: 10px;
-  padding: 5px 20px;
-  display: ${(props) => (props.show? "flex" : "none")};
-  @media only screen and (min-width: 1100px) {
-    display: none;
-  }
-`;
 const SecondTitleDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  @media only screen and (min-width: 1100px) {
-    display: none;
-  }
 `;
 const SecondTitle = styled.h3`
   color: White;
   font-size: 14px;
-  @media only screen and (min-width: 1100px) {
-    display: none;
-  }
 `;
