@@ -7,7 +7,6 @@ import { useState } from "react";
 
 function Header() {
   const [open, setOpen] = useState(false);
-  const [titleShow, setTitleShow] = useState(0);
 
   return (
     <>
@@ -23,93 +22,13 @@ function Header() {
           <Nav primary={open.toString()}>
             <SearchBar type="text" />
             <UL>
-              <Li
-                onClick={() => {
-                  setTitleShow(titleShow === 1 ? 0 : 1);
-                }}
-              >
-                <TitleDiv>
-                  <P color={titleShow === 1}>სიახლეები</P>
-                  <Arrow rotate={titleShow === null} src={arrow} />
-                </TitleDiv>
-                <Hoverline></Hoverline>
-              </Li>
-              <Li
-                onClick={() => {
-                  setTitleShow(titleShow === 2 ? 0 : 2);
-                }}
-              >
-                <TitleDiv>
-                  <P color={titleShow === 2}>სკოლა</P>
-                  <Arrow src={arrow} rotate={titleShow === 2} />
-                </TitleDiv>
-                <Hoverline></Hoverline>
-                <MiniMenu show={titleShow === 2}>
-                  <SecondTitleDiv>
-                    <SecondTitle>მისია, ხედვა, ღირებებულები</SecondTitle>
-                    <Arrow2 src={arrow} />
-                  </SecondTitleDiv>
-                  <SecondTitleDiv>
-                    <SecondTitle>სტრუქტურა</SecondTitle>
-                    <Arrow2 src={arrow} />
-                  </SecondTitleDiv>
-                </MiniMenu>
-              </Li>
-              <Li
-                onClick={() => {
-                  setTitleShow(titleShow === 3 ? 0 : 3);
-                }}
-              >
-                <TitleDiv>
-                  <P color={titleShow === 3}>თანამშრომლები</P>
-                  <Arrow src={arrow} rotate={titleShow === null} />
-                </TitleDiv>
-                <Hoverline></Hoverline>
-              </Li>
-              <Li
-                onClick={() => {
-                  setTitleShow(titleShow === 4 ? 0 : 4);
-                }}
-              >
-                <TitleDiv>
-                  <P color={titleShow === 4}>მოსწავლეები</P>
-                  <Arrow src={arrow} rotate={titleShow === null} />
-                </TitleDiv>
-                <Hoverline></Hoverline>
-              </Li>
-              <Li
-                onClick={() => {
-                  setTitleShow(titleShow === 5 ? 0 : 5);
-                }}
-              >
-                <TitleDiv>
-                  <P color={titleShow === 5}>შინაგანაწესი</P>
-                  <Arrow src={arrow} rotate={titleShow === null} />
-                </TitleDiv>
-                <Hoverline></Hoverline>
-              </Li>
-              <Li
-                onClick={() => {
-                  setTitleShow(titleShow === 6 ? 0 : 6);
-                }}
-              >
-                <TitleDiv>
-                  <P color={titleShow === 6}>საჯარო ინფორმაცია</P>
-                  <Arrow src={arrow} rotate={titleShow === null} />
-                </TitleDiv>
-                <Hoverline></Hoverline>
-              </Li>
-              <Li
-                onClick={() => {
-                  setTitleShow(7);
-                }}
-              >
-                <TitleDiv>
-                  <P color={titleShow === 7}>კონტაქტი</P>
-                  <Arrow src={arrow} rotate={titleShow === 8} />
-                </TitleDiv>
-                <Hoverline></Hoverline>
-              </Li>
+              <HeaderComponent show="none" title="სიახლეები" />
+              <HeaderComponent show="" title="სკოლა" />
+              <HeaderComponent show="none" title="თანამშრომლები" />
+              <HeaderComponent show="none" title="მოსწავლეები" />
+              <HeaderComponent show="none" title="შინაგანაწესი" />
+              <HeaderComponent title="საჯარო ინფორმაცია" />
+              <HeaderComponent show="none" title="კონტაქტი" />
             </UL>
           </Nav>
         </HeaderBottom>
@@ -119,6 +38,45 @@ function Header() {
 }
 
 export default Header;
+
+function HeaderComponent(props: any) {
+  const [titleShow, setTitleShow] = useState(false);
+  return (
+    <Li
+      onMouseOverCapture={() => {
+        setTitleShow(true);
+      }}
+      onMouseOut={() => {
+        setTitleShow(false);
+      }}
+    >
+      <TitleDiv>
+        <P>{props.title}</P>
+        <Arrow src={arrow} rotate={true} />
+      </TitleDiv>
+      <Hoverline></Hoverline>
+      <MiniMenu
+        style={{ display: props.show }}
+        onMouseOver={() => {
+          setTitleShow(true);
+        }}
+        onMouseOut={() => {
+          setTitleShow(false);
+        }}
+        show={titleShow}
+      >
+        <SecondTitleDiv>
+          <SecondTitle>მისია, ხედვა, ღირებებულები</SecondTitle>
+          <Arrow2 src={arrow} />
+        </SecondTitleDiv>
+        <SecondTitleDiv>
+          <SecondTitle>სტრუქტურა</SecondTitle>
+          <Arrow2 src={arrow} />
+        </SecondTitleDiv>
+      </MiniMenu>
+    </Li>
+  );
+}
 
 const WebPageHeader = styled.header``;
 const SearchBar = styled.input`
@@ -151,9 +109,7 @@ const HeaderBottom = styled.div`
     padding: 40px 20px;
     padding-bottom: 0px;
   }
-  `
-;
-
+`;
 const BurgerBar = styled.img`
   width: 20px;
   height: 20px;
@@ -233,22 +189,21 @@ const Li = styled.li`
 const TitleDiv = styled.div`
   display: flex;
   justify-content: space-between;
-`
-;
+`;
 const MiniMenu = styled.div<{ show: boolean }>`
   flex-direction: column;
   gap: 10px;
   padding: 5px 20px;
-  display: ${(props) => (props.show? "flex" : "none")};
+  display: ${(props) => (props.show ? "flex" : "none")};
   @media only screen and (min-width: 1100px) {
     position: absolute;
     background-color: black;
-    top: 60px;
+    top: 30px;
     left: -40px;
+    z-index: 9;
   }
-  `
-;
-const P = styled.h2<{color: boolean}>`
+`;
+const P = styled.h2`
   text-align: center;
   font-family: bpg_ghalo;
   color: #ffffff;
@@ -259,12 +214,11 @@ const P = styled.h2<{color: boolean}>`
   opacity: ${(props) => (props.color ? "1" : "0.85")};
   @media only screen and (min-width: 1100px) {
     font-size: 15px;
-    &:hover + ${MiniMenu}{
+    &:hover + ${MiniMenu} {
       display: inline;
+    }
   }
-}
-`
-;
+`;
 const Arrow = styled.img<{ rotate: boolean }>`
   width: 8px;
   height: 8px;
