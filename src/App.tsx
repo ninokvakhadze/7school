@@ -27,6 +27,13 @@ const GlobalStyles = createGlobalStyle`
   @font-face {
   src: url(${GeorgianFont});
   font-family: bpg_ghalo;
+  }
+  @keyframes falldown{
+   0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
-
 `;
