@@ -75,7 +75,6 @@ const Maindiv = styled.div`
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   flex-direction: column;
-  background-color: #d0cece;
 `;
 
 const ImageWrapper = styled.div`
@@ -154,7 +153,8 @@ const Newscontainer = styled.div`
     grid-template-columns: auto auto;
   }
   @media only screen and (min-width: 1040px) {
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
+    gap: 150px;
   }
 `;
 

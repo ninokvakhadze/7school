@@ -4,7 +4,6 @@ import GeorgianFont from "./bpg_glaho.ttf";
 import MainPage from "./mainpage/mainpage";
 import Footer from "./header-footer/footer";
 
-
 function App() {
   return (
     <>
@@ -24,6 +23,8 @@ const GlobalStyles = createGlobalStyle`
   padding: 0px;
   box-sizing: border-box;
   }
+
+
   @font-face {
   src: url(${GeorgianFont});
   font-family: bpg_ghalo;
