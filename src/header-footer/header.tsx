@@ -4,6 +4,8 @@ import burgerImg from "../assets/bars-solid.svg";
 import logo from "../assets/logo-1.png";
 import arrow from "../assets/icon-chevron.svg";
 import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import { MouseEvent } from "react";
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -41,14 +43,22 @@ export default Header;
 
 function HeaderComponent(props: any) {
   const [titleShow, setTitleShow] = useState(false);
+  const mediaQuery = useMediaQuery({ query: "(max-width: 1100px)" });
+
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    setTitleShow((prevIsOpen) => !prevIsOpen);
+  };
+  const handleMouseOver = (event: MouseEvent<HTMLButtonElement>) => {
+    setTitleShow(true);
+  };
+  const handelMouseout = (event: MouseEvent<HTMLButtonElement>) => {
+    setTitleShow(false);
+  };
   return (
     <Li
-      onMouseOverCapture={() => {
-        setTitleShow(true);
-      }}
-      onMouseOut={() => {
-        setTitleShow(false);
-      }}
+      onClick={mediaQuery ? handleClick : undefined}
+      onMouseOver={!mediaQuery ? handleMouseOver : undefined}
+      onMouseOut={!mediaQuery ? handelMouseout : undefined}
     >
       <TitleDiv>
         <P>{props.title}</P>
@@ -56,13 +66,9 @@ function HeaderComponent(props: any) {
       </TitleDiv>
       <Hoverline></Hoverline>
       <MiniMenu
-        style={{ display: props.show }}
-        onMouseOver={() => {
-          setTitleShow(true);
-        }}
-        onMouseOut={() => {
-          setTitleShow(false);
-        }}
+      style={{ display: props.show }}
+        onMouseOver={!mediaQuery ? handleMouseOver : undefined}
+        onMouseOut={!mediaQuery ? handelMouseout : undefined}
         show={titleShow}
       >
         <SecondTitleDiv>
@@ -138,8 +144,10 @@ const Nav = styled.nav<{ primary: string }>`
   top: 70px;
   width: 100%;
   display: ${(props) => (props.primary === "true" ? "inLine" : "none")};
+  animation: falldown 2s ease-in-out ;
   @media only screen and (min-width: 768px) {
     top: 120px;
+    animation: none;
   }
   @media only screen and (min-width: 1100px) {
     position: unset;
@@ -167,13 +175,15 @@ const Hoverline = styled.div`
   @media only screen and (min-width: 1100px) {
     height: 6px;
     background-color: #8b0909;
+    width: 100%;
   }
 `;
-const Li = styled.li`
+const Li = styled.button`
   border-bottom: 1px solid gray;
   padding-bottom: 30px;
   display: flex;
   flex-direction: column;
+  background-color: black;
   gap: 20px;
   @media only screen and (min-width: 1100px) {
     position: relative;
@@ -182,25 +192,29 @@ const Li = styled.li`
     height: 60px;
     &:hover ${Hoverline} {
       display: inline;
-      margin-top: 15px;
+      margin-top: 11px;
     }
   }
 `;
 const TitleDiv = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `;
-const MiniMenu = styled.div<{ show: boolean }>`
+const MiniMenu = styled.button<{ show: boolean }>`
+  width: 100%;
   flex-direction: column;
   gap: 10px;
   padding: 5px 20px;
+  background-color: black;
   display: ${(props) => (props.show ? "flex" : "none")};
   @media only screen and (min-width: 1100px) {
     position: absolute;
-    background-color: black;
     top: 30px;
-    left: -40px;
-    z-index: 9;
+    left: -20px;
+    width: 200px;
+    animation: falldown 2s ease-in-out ;
+    z-index: -1;
   }
 `;
 const P = styled.h2`
@@ -243,4 +257,5 @@ const SecondTitleDiv = styled.div`
 const SecondTitle = styled.h3`
   color: White;
   font-size: 14px;
-`;
+  text-align: left;
+`
