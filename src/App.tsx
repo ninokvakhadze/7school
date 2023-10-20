@@ -37,4 +37,12 @@ const GlobalStyles = createGlobalStyle`
     transform: translateY(0);
   }
 }
+  @keyframes falldown2{
+     0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(3vh);
+  }
+}
 `;

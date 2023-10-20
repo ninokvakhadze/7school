@@ -25,12 +25,12 @@ function Header() {
             <SearchBar type="text" />
             <UL>
               <HeaderComponent show="none" title="სიახლეები" />
-              <HeaderComponent show="" title="სკოლა" />
+              <HeaderComponent show="" title="სკოლა" number={false}/>
               <HeaderComponent show="none" title="თანამშრომლები" />
               <HeaderComponent show="none" title="მოსწავლეები" />
               <HeaderComponent show="none" title="შინაგანაწესი" />
-              <HeaderComponent title="საჯარო ინფორმაცია" />
-              <HeaderComponent show="none" title="კონტაქტი" />
+              <HeaderComponent title="საჯარო ინფორმაცია" number={true} />
+              <HeaderComponent show="none" title="კონტაქტი"/>
             </UL>
           </Nav>
         </HeaderBottom>
@@ -41,10 +41,12 @@ function Header() {
 
 export default Header;
 
+const titles = ["Title 1", "Title 2", "Title 3", "Title 4"];
+const titles2 = ["Title 5", "Title 6", "Title 7", "Title 8"];
+
 function HeaderComponent(props: any) {
   const [titleShow, setTitleShow] = useState(false);
   const mediaQuery = useMediaQuery({ query: "(max-width: 1100px)" });
-
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setTitleShow((prevIsOpen) => !prevIsOpen);
   };
@@ -66,19 +68,17 @@ function HeaderComponent(props: any) {
       </TitleDiv>
       <Hoverline></Hoverline>
       <MiniMenu
-      style={{ display: props.show }}
+        style={{ display: props.show }}
         onMouseOver={!mediaQuery ? handleMouseOver : undefined}
         onMouseOut={!mediaQuery ? handelMouseout : undefined}
         show={titleShow}
       >
-        <SecondTitleDiv>
-          <SecondTitle>მისია, ხედვა, ღირებებულები</SecondTitle>
-          <Arrow2 src={arrow} />
-        </SecondTitleDiv>
-        <SecondTitleDiv>
-          <SecondTitle>სტრუქტურა</SecondTitle>
-          <Arrow2 src={arrow} />
-        </SecondTitleDiv>
+        {props.number? titles : titles2 .map((title, index) => (
+          <SecondTitleDiv>
+            <SecondTitle key={index}>{title}</SecondTitle>
+            <Arrow2 src={arrow} />
+          </SecondTitleDiv>
+        ))}
       </MiniMenu>
     </Li>
   );
@@ -144,7 +144,7 @@ const Nav = styled.nav<{ primary: string }>`
   top: 70px;
   width: 100%;
   display: ${(props) => (props.primary === "true" ? "inLine" : "none")};
-  animation: falldown 2s ease-in-out ;
+  animation: falldown 2s ease-in-out;
   @media only screen and (min-width: 768px) {
     top: 120px;
     animation: none;
@@ -213,8 +213,8 @@ const MiniMenu = styled.button<{ show: boolean }>`
     top: 30px;
     left: -20px;
     width: 200px;
-    animation: falldown 2s ease-in-out ;
-    z-index: -1;
+    animation: falldown2 0.5s linear forwards;
+    z-index: 1;
   }
 `;
 const P = styled.h2`
@@ -258,4 +258,4 @@ const SecondTitle = styled.h3`
   color: White;
   font-size: 14px;
   text-align: left;
-`
+`;
