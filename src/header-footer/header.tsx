@@ -3,7 +3,7 @@ import Search from "../assets/magnifying-glass-solid.svg";
 import burgerImg from "../assets/bars-solid.svg";
 import logo from "../assets/logo-1.png";
 import arrow from "../assets/icon-chevron.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { MouseEvent } from "react";
 
@@ -25,12 +25,12 @@ function Header() {
             <SearchBar type="text" />
             <UL>
               <HeaderComponent show="none" title="სიახლეები" />
-              <HeaderComponent show="" title="სკოლა" number={false}/>
+              <HeaderComponent show="" title="სკოლა" number={true} />
               <HeaderComponent show="none" title="თანამშრომლები" />
               <HeaderComponent show="none" title="მოსწავლეები" />
               <HeaderComponent show="none" title="შინაგანაწესი" />
-              <HeaderComponent title="საჯარო ინფორმაცია" number={true} />
-              <HeaderComponent show="none" title="კონტაქტი"/>
+              <HeaderComponent title="საჯარო ინფორმაცია" number={false} />
+              <HeaderComponent show="none" title="კონტაქტი" />
             </UL>
           </Nav>
         </HeaderBottom>
@@ -41,12 +41,18 @@ function Header() {
 
 export default Header;
 
-const titles = ["Title 1", "Title 2", "Title 3", "Title 4"];
-const titles2 = ["Title 5", "Title 6", "Title 7", "Title 8"];
+const titles = ["მისია, ხედვა, ღირებებულები", "სტრუქტრურა"];
+const titles2 = [
+  "სტრატეგიული გეგმა",
+  "კურიკულუმის შემუშავებისა და განვითარების მეთოდოლოგია",
+  "შეფასების სისტემის ვერიფიკაციის მექანიზმი",
+  "ბიბლიოთეკით სარგებლობის წესი",
+];
 
 function HeaderComponent(props: any) {
   const [titleShow, setTitleShow] = useState(false);
   const mediaQuery = useMediaQuery({ query: "(max-width: 1100px)" });
+  const [menu, setMenu] = useState<string[]>([]);
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setTitleShow((prevIsOpen) => !prevIsOpen);
   };
@@ -56,6 +62,17 @@ function HeaderComponent(props: any) {
   const handelMouseout = (event: MouseEvent<HTMLButtonElement>) => {
     setTitleShow(false);
   };
+
+  useEffect(() => {
+    if (props.number) {
+      setMenu(titles);
+
+      console.log(titles);
+    } else {
+      setMenu(titles2);
+      console.log(titles2);
+    }
+  }, []);
   return (
     <Li
       onClick={mediaQuery ? handleClick : undefined}
@@ -73,7 +90,7 @@ function HeaderComponent(props: any) {
         onMouseOut={!mediaQuery ? handelMouseout : undefined}
         show={titleShow}
       >
-        {props.number? titles : titles2 .map((title, index) => (
+        {menu.map((title, index) => (
           <SecondTitleDiv>
             <SecondTitle key={index}>{title}</SecondTitle>
             <Arrow2 src={arrow} />
