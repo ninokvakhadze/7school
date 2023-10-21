@@ -66,11 +66,8 @@ function HeaderComponent(props: any) {
   useEffect(() => {
     if (props.number) {
       setMenu(titles);
-
-      console.log(titles);
     } else {
       setMenu(titles2);
-      console.log(titles2);
     }
   }, []);
   return (
@@ -190,12 +187,13 @@ const UL = styled.ul`
 const Hoverline = styled.div`
   display: none;
   @media only screen and (min-width: 1100px) {
-    height: 6px;
+    height: 9px;
     background-color: #8b0909;
     width: 100%;
   }
 `;
 const Li = styled.button`
+  border: none;
   border-bottom: 1px solid gray;
   padding-bottom: 30px;
   display: flex;
