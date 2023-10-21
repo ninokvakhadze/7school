@@ -3,13 +3,15 @@ import Header from "./header-footer/header";
 import GeorgianFont from "./bpg_glaho.ttf";
 import MainPage from "./mainpage/mainpage";
 import Footer from "./header-footer/footer";
+import News from "./news/news";
 
 function App() {
   return (
     <>
       <GlobalStyles />
       <Header />
-      <MainPage />
+      {/* <MainPage /> */}
+      <News />
       <Footer />
     </>
   );
