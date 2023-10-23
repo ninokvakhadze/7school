@@ -25,11 +25,11 @@ function Header() {
             <SearchBar type="text" />
             <UL>
               <HeaderComponent show="none" title="სიახლეები" />
-              <HeaderComponent show="" title="სკოლა" number={true} />
+              <HeaderComponent show="" title="სკოლა" number={false} />
               <HeaderComponent show="none" title="თანამშრომლები" />
               <HeaderComponent show="none" title="მოსწავლეები" />
               <HeaderComponent show="none" title="შინაგანაწესი" />
-              <HeaderComponent title="საჯარო ინფორმაცია" number={false} />
+              <HeaderComponent title="საჯარო ინფორმაცია" number={true} />
               <HeaderComponent show="none" title="კონტაქტი" />
             </UL>
           </Nav>
@@ -87,6 +87,14 @@ function HeaderComponent(props: any) {
         onMouseOut={!mediaQuery ? handelMouseout : undefined}
         show={titleShow}
       >
+        {props.number
+          ? titles
+          : titles2.map((title, index) => (
+              <SecondTitleDiv>
+                <SecondTitle key={index}>{title}</SecondTitle>
+                <Arrow2 src={arrow} />
+              </SecondTitleDiv>
+            ))}
         {menu.map((title, index) => (
           <SecondTitleDiv>
             <SecondTitle key={index}>{title}</SecondTitle>
