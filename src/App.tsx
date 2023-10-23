@@ -4,14 +4,15 @@ import GeorgianFont from "./bpg_glaho.ttf";
 import MainPage from "./mainpage/mainpage";
 import Footer from "./header-footer/footer"
 import Employees from "./employees/employees";
-
+import Contacts from "./contacts/contacts";
 function App() {
   return (
     <>
       <GlobalStyles />
       <Header />
-      <MainPage />
+      {/* <MainPage /> */}
       {/* <Employees/> */}
+      <Contacts/>
       <Footer />
     </>
   );
