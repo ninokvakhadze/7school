@@ -5,7 +5,7 @@ import MainPage from "./mainpage/mainpage";
 import News from "./news/news";
 import Footer from "./header-footer/footer"
 import Employees from "./employees/employees";
-
+import Contacts from "./contacts/contacts";
 function App() {
   return (
     <>
@@ -14,6 +14,7 @@ function App() {
       {/* <MainPage /> */}
       <News />
       {/* <Employees/> */}
+      <Contacts/>
       <Footer />
     </>
   );
