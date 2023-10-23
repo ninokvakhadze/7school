@@ -3,7 +3,7 @@ import Search from "../assets/magnifying-glass-solid.svg";
 import burgerImg from "../assets/bars-solid.svg";
 import logo from "../assets/logo-1.png";
 import arrow from "../assets/icon-chevron.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { MouseEvent } from "react";
 
@@ -41,12 +41,18 @@ function Header() {
 
 export default Header;
 
-const titles = ["Title 1", "Title 2", "Title 3", "Title 4"];
-const titles2 = ["Title 5", "Title 6", "Title 7", "Title 8"];
+const titles = ["მისია, ხედვა, ღირებებულები", "სტრუქტრურა"];
+const titles2 = [
+  "სტრატეგიული გეგმა",
+  "კურიკულუმის შემუშავებისა და განვითარების მეთოდოლოგია",
+  "შეფასების სისტემის ვერიფიკაციის მექანიზმი",
+  "ბიბლიოთეკით სარგებლობის წესი",
+];
 
 function HeaderComponent(props: any) {
   const [titleShow, setTitleShow] = useState(false);
   const mediaQuery = useMediaQuery({ query: "(max-width: 1100px)" });
+  const [menu, setMenu] = useState<string[]>([]);
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setTitleShow((prevIsOpen) => !prevIsOpen);
   };
@@ -56,6 +62,14 @@ function HeaderComponent(props: any) {
   const handelMouseout = (event: MouseEvent<HTMLButtonElement>) => {
     setTitleShow(false);
   };
+
+  useEffect(() => {
+    if (props.number) {
+      setMenu(titles);
+    } else {
+      setMenu(titles2);
+    }
+  }, []);
   return (
     <Li
       onClick={mediaQuery ? handleClick : undefined}
@@ -81,6 +95,12 @@ function HeaderComponent(props: any) {
                 <Arrow2 src={arrow} />
               </SecondTitleDiv>
             ))}
+        {menu.map((title, index) => (
+          <SecondTitleDiv>
+            <SecondTitle key={index}>{title}</SecondTitle>
+            <Arrow2 src={arrow} />
+          </SecondTitleDiv>
+        ))}
       </MiniMenu>
     </Li>
   );
@@ -175,12 +195,13 @@ const UL = styled.ul`
 const Hoverline = styled.div`
   display: none;
   @media only screen and (min-width: 1100px) {
-    height: 6px;
+    height: 9px;
     background-color: #8b0909;
     width: 100%;
   }
 `;
 const Li = styled.button`
+  border: none;
   border-bottom: 1px solid gray;
   padding-bottom: 30px;
   display: flex;

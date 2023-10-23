@@ -2,8 +2,9 @@ import styled, { createGlobalStyle } from "styled-components";
 import Header from "./header-footer/header";
 import GeorgianFont from "./bpg_glaho.ttf";
 import MainPage from "./mainpage/mainpage";
-import Footer from "./header-footer/footer";
 import News from "./news/news";
+import Footer from "./header-footer/footer"
+import Employees from "./employees/employees";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Header />
       {/* <MainPage /> */}
       <News />
+      {/* <Employees/> */}
       <Footer />
     </>
   );
