@@ -25,11 +25,11 @@ function Header() {
             <SearchBar type="text" />
             <UL>
               <HeaderComponent show="none" title="სიახლეები" />
-              <HeaderComponent show="" title="სკოლა" number={false} />
+              <HeaderComponent show="" title="სკოლა" number={true} />
               <HeaderComponent show="none" title="თანამშრომლები" />
               <HeaderComponent show="none" title="მოსწავლეები" />
               <HeaderComponent show="none" title="შინაგანაწესი" />
-              <HeaderComponent title="საჯარო ინფორმაცია" number={true} />
+              <HeaderComponent title="საჯარო ინფორმაცია" number={false} />
               <HeaderComponent show="none" title="კონტაქტი" />
             </UL>
           </Nav>
@@ -53,13 +53,13 @@ function HeaderComponent(props: any) {
   const [titleShow, setTitleShow] = useState(false);
   const mediaQuery = useMediaQuery({ query: "(max-width: 1100px)" });
   const [menu, setMenu] = useState<string[]>([]);
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleClick = () => {
     setTitleShow((prevIsOpen) => !prevIsOpen);
   };
-  const handleMouseOver = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleMouseOver = () => {
     setTitleShow(true);
   };
-  const handelMouseout = (event: MouseEvent<HTMLButtonElement>) => {
+  const handelMouseout = () => {
     setTitleShow(false);
   };
 
@@ -87,14 +87,6 @@ function HeaderComponent(props: any) {
         onMouseOut={!mediaQuery ? handelMouseout : undefined}
         show={titleShow}
       >
-        {props.number
-          ? titles
-          : titles2.map((title, index) => (
-              <SecondTitleDiv>
-                <SecondTitle key={index}>{title}</SecondTitle>
-                <Arrow2 src={arrow} />
-              </SecondTitleDiv>
-            ))}
         {menu.map((title, index) => (
           <SecondTitleDiv>
             <SecondTitle key={index}>{title}</SecondTitle>
