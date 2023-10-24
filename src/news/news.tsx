@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import vaja from "../assets/vaja.jpeg";
 import example from "../assets/example.png";
+import facebook from "../assets/facebook (1).svg";
+import twitter from "../assets/x-twitter.svg";
+import instagram from "../assets/instagram.svg";
 
 function News() {
   return (
@@ -16,7 +19,7 @@ function News() {
           ></Iframe>
         </Card>
         <Card color="blue" width="700px" show={true}>
-          <div>
+          <Container1>
             <Img2 src={example} />
             <Infodiv>
               <Title>დირექტორობის მსურველი კანდიდატის პრეზენტაცია</Title>
@@ -30,7 +33,12 @@ function News() {
                 დააკვირდეს […]
               </Info>
             </Infodiv>
-          </div>
+          </Container1>
+          <Share>
+            <Img3 src={facebook} />
+            <Img3 src={instagram} />
+            <Img3 src={twitter} />
+          </Share>
         </Card>
         <Card color="green" width="250px" show={false}>
           <Img src={vaja} />
@@ -53,8 +61,8 @@ const Card = styled.div<{ width: string; show: boolean }>`
   background-color: ${(props) => props.color || "gray"};
   width: ${(props) => props.width || "200px"};
   display: flex;
-  flex-direction: ${(props) => (props.show ? "row" : "column")};
-  align-items: ${(props) => (props.show ? "" : "center")};
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Iframe = styled.iframe`
@@ -90,4 +98,25 @@ const Img2 = styled.img`
   height: 100px;
   margin-top: 20px;
   margin-left: 10px;
+`;
+
+const Container1 = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  height: 240px;
+`;
+
+const Share = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #0b0b0b;
+`;
+const Img3 = styled.img`
+  width: 30px;
+  height: 30px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  cursor: pointer;
 `;
