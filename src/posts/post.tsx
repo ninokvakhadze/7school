@@ -71,28 +71,26 @@ const Iframe = styled.iframe`
   }
 `;
 const Maindiv = styled.div`
-  display: flex; /* Center horizontally and vertically */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 `;
 
 const ImageWrapper = styled.div`
   width: 100%;
   height: 80%;
-  overflow: hidden; // Hide overflowing parts of the image
+  overflow: hidden;
 
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover; // Maintain aspect ratio and cover the container
+    object-fit: cover;
   }
 `;
 
 const Text = styled.p`
   height: 20%;
-
-  /* position: absolute; */
 `;
 
 const Title = styled.p`
