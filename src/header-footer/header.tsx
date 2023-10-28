@@ -5,7 +5,6 @@ import logo from "../assets/logo-1.png";
 import arrow from "../assets/icon-chevron.svg";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import { MouseEvent } from "react";
 
 function Header() {
   const [open, setOpen] = useState(false);

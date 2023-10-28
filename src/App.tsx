@@ -12,9 +12,9 @@ function App() {
       <GlobalStyles />
       <Header />
       {/* <MainPage /> */}
-      <News />
+      {/* <News /> */}
       {/* <Employees/> */}
-      {/* <Contacts/> */}
+      <Contacts/>
       <Footer />
     </>
   );
