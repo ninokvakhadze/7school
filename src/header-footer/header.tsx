@@ -5,6 +5,7 @@ import logo from "../assets/logo-1.png";
 import arrow from "../assets/icon-chevron.svg";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -23,7 +24,10 @@ function Header() {
           <Nav primary={open.toString()}>
             <SearchBar type="text" />
             <UL>
-              <HeaderComponent show="none" title="სიახლეები" />
+              <Link to="/news">
+                <HeaderComponent show="none" title="სიახლეები" />
+              </Link>
+
               <HeaderComponent show="" title="სკოლა" number={true} />
               <HeaderComponent show="none" title="თანამშრომლები" />
               <HeaderComponent show="none" title="მოსწავლეები" />
@@ -52,6 +56,7 @@ function HeaderComponent(props: any) {
   const [titleShow, setTitleShow] = useState(false);
   const mediaQuery = useMediaQuery({ query: "(max-width: 1100px)" });
   const [menu, setMenu] = useState<string[]>([]);
+
   const handleClick = () => {
     setTitleShow((prevIsOpen) => !prevIsOpen);
   };

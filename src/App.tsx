@@ -1,4 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
+
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./header-footer/header";
 import GeorgianFont from "./bpg_glaho.ttf";
 import MainPage from "./mainpage/mainpage";
@@ -11,10 +13,16 @@ function App() {
     <>
       <GlobalStyles />
       <Header />
-      {/* <MainPage /> */}
-      {/* <News /> */}
-      {/* <Employees/> */}
-      <Contacts/>
+
+      <Router>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/contact" element={<Contacts />} />
+          <Route path="/employees" element={<Employees />} />
+        </Routes>
+      </Router>
+
       <Footer />
     </>
   );

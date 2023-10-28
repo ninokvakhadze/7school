@@ -10,11 +10,11 @@ import Singlepostfull from "./singlepostfull"; // Adjust the path as needed
 function News() {
   return (
     <div>
-      {/* <Container>
+      <Container>
         <Singlepost />
         <Singlepost />
         <Singlepost />
-      </Container> */}
+      </Container>
       <Singlepostfull />
     </div>
   );
