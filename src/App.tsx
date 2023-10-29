@@ -12,18 +12,20 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <Header />
+      
 
       <Router>
+      <Header />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/news" element={<News />} />
           <Route path="/contact" element={<Contacts />} />
           <Route path="/employees" element={<Employees />} />
         </Routes>
+        <Footer />
       </Router>
 
-      <Footer />
+    
     </>
   );
 }
