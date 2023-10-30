@@ -25,7 +25,7 @@ function Header() {
             <SearchBar type="text" />
             <UL>
               <Link to="/news">
-              <HeaderComponent show="none" title="სიახლეები" />
+                <HeaderComponent show="none" title="სიახლეები" />
               </Link>
               <HeaderComponent show="" title="სკოლა" number={true} />
               <HeaderComponent show="none" title="თანამშრომლები" />

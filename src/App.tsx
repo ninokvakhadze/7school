@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import Singlepostfull from "./news/singlepostfull";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./header-footer/header";
@@ -12,20 +13,18 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      
 
       <Router>
-      <Header />
+        <Header />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/news" element={<News />} />
+          <Route path="/news/post" element={<Singlepostfull />} />
           <Route path="/contact" element={<Contacts />} />
           <Route path="/employees" element={<Employees />} />
         </Routes>
         <Footer />
       </Router>
-
-    
     </>
   );
 }
