@@ -5,17 +5,18 @@ import styled from "styled-components";
 // import twitter from "../assets/x-twitter.svg";
 // import instagram from "../assets/instagram.svg";
 import Singlepost from "./singlepost";
-import Singlepostfull from "./singlepostfull"; // Adjust the path as needed
+import { Link } from "react-router-dom";
 
 function News() {
   return (
     <div>
       <Container>
-        <Singlepost />
+        <Link to="/news/post">
+          <Singlepost />
+        </Link>
         <Singlepost />
         <Singlepost />
       </Container>
-      <Singlepostfull />
     </div>
   );
 }
