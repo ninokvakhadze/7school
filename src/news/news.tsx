@@ -1,37 +1,39 @@
 import styled from "styled-components";
-// import vaja from "../assets/vaja.jpeg";
-// import example from "../assets/example.png";
-// import facebook from "../assets/facebook (1).svg";
-// import twitter from "../assets/x-twitter.svg";
-// import instagram from "../assets/instagram.svg";
 import Singlepost from "./singlepost";
-import Singlepostfull from "./singlepostfull"; // Adjust the path as needed
+import Search from "./../assets/magnifying-glass-solid.svg";
 
 function News() {
   return (
-    <div>
-      <Container>
+    <>
+     <SearchBar type="text" />
+      <MainDiv>
+       
         <Singlepost />
-        <Singlepost />
-        <Singlepost />
-      </Container>
-      <Singlepostfull />
-    </div>
+      </MainDiv>
+    </>
   );
 }
 
 export default News;
 
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: auto;
-  gap: 10px;
-  padding: 20px 30px;
-
-  @media only screen and (min-width: 768px) {
-    grid-template-columns: auto auto;
-  }
-  @media only screen and (min-width: 1040px) {
-    grid-template-columns: auto auto auto;
+const MainDiv = styled.div`
+  padding: 4.5%;
+`;
+const SearchBar = styled.input`
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 7px 20px;
+  background-color: #8b0909;
+  background-image: url(${Search});
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center right 4.5%;
+  color: #fff;
+  @media only screen and (min-width: 1200px) {
+    /* position: absolute;
+    top: 0;
+    right: 0; */
+    width: 100%;
   }
 `;
