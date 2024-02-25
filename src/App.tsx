@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Header from "./header-footer/header-components/header"
+import Header from "./header-footer/header-components/Header"
 import GeorgianFont from "./bpg_glaho.ttf";
 import MainPage from "./mainpage/mainpage";
 import News from "./news/news";
@@ -13,18 +13,17 @@ function App() {
     <>
       <GlobalStyles />
       <Router>
-      <Header />
+        <Header />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/news" element={<News />} />
+          <Route path="/news/post" element={<Singlepostfull />} />
           <Route path="/contact" element={<Contacts />} />
           <Route path="/employees" element={<Employees />} />
           <Route path="/news/65d39b36e9373f24112f4bc7" element={<Singlepostfull/>}/>
         </Routes>
         <Footer />
       </Router>
-
-    
     </>
   );
 }

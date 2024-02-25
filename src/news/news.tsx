@@ -11,6 +11,7 @@ function News() {
         <Singlepost />
       </MainDiv>
     </>
+
   );
 }
 
