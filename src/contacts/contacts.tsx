@@ -7,10 +7,10 @@ function Contacts() {
       <MapEmail>
         <Iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5897.538948695133!2d43.007167!3d42.347438!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x405c9bf4cd10247f%3A0x8640a44991d4275!2z4YOi4YOn4YOY4YOR4YOj4YOa4YOY4YOhIE4tNyDhg6Hhg5Dhg6_hg5Dhg6Dhg50g4YOh4YOZ4YOd4YOa4YOQ!5e0!3m2!1sen!2sge!4v1698411700755!5m2!1sen!2sge"></Iframe>
         <EmailDiv>
-          <EmailInput type="text"></EmailInput>
-          <TextInput style={{ resize: "none" }} />
           <Adress>მისამართი: ქ.ტყიბული ბრეგვაძის ქ N</Adress>
           <PhoneNumber>ტელეფონი:</PhoneNumber>
+          <Adress>მეილი:</Adress>
+          <Adress>Facebook:</Adress>
         </EmailDiv>
       </MapEmail>
     </Contact>
@@ -26,7 +26,7 @@ const Name = styled.h2`
   font-family: bpg_ghalo;
 `;
 const Contact = styled.div`
-  padding: 30px 20px;
+  padding: 4.5%;
   display: flex;
   flex-direction: column;
   align-items: left;

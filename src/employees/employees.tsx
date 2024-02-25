@@ -29,19 +29,30 @@ function Employees() {
 export default Employees;
 
 const Teachers = styled.div`
-  margin-top: 30px;
-  padding: 0px 20px;
-  display: grid;
-  grid-template-columns: auto;
+padding: 4.5%;
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
   @media only screen and (min-width: 768px) {
-    grid-template-columns: auto auto;
-    gap: 15px;
+    gap: 10%;
+    align-items: left;
+    justify-content: flex-start;
   }
-  @media only screen and (min-width: 1100px) {
-    grid-template-columns: auto auto auto auto;
+  @media only screen and (min-width: 1020px) {
+    gap: 5%;
+    align-items: left;
   }
 `;
-const TeacherDiv = styled.div``;
+const TeacherDiv = styled.div`
+  width: 100%;
+  margin-top: 50px;
+  @media only screen and (min-width: 768px) {
+    width: 45%;
+  }
+  @media only screen and (min-width: 1020px) {
+    width: 30%;
+  }`;
 const TeacherImg = styled.img`
   width: 100%;
 `;

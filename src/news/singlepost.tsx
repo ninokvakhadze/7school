@@ -1,26 +1,64 @@
 import styled from "styled-components";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+interface Post {
+  _id: string;
+  name: string;
+  imageCover: string;
+  text: string;
+  videos: string;
+}
+
+
 // import vaja from "../assets/vaja.jpeg";
 // import example from "../assets/example.png";
-import facebook from "../assets/facebook (1).svg";
-import twitter from "../assets/x-twitter.svg";
-import instagram from "../assets/instagram.svg";
-import games from "../assets/kalatburti.jpg";
+// import facebook from "../assets/facebook (1).svg";
+// import twitter from "../assets/x-twitter.svg";
+// import instagram from "../assets/instagram.svg";
+// import games from "../assets/kalatburti.jpg";
 
 function Singlepost() {
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/posts");
+      const result = await response.json();
+      console.log(result.data.posts);
+      setPosts(result.data.posts);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const displayImage = (imageData: { contentType: String; data: String }) => {
+    return `data:${imageData ? imageData.contentType : ""};base64,${
+      imageData ? imageData.data : ""
+    }`;
+  };
+  const line = {
+    textDecoration: "none",
+  };
+
   return (
     <div>
       <Container>
-        <ImageWrapper>
-          <img src={games} alt="Tenisi" />
-        </ImageWrapper>
-        <Info>
-          <Title>საქართველოს ულამაზესი კუთხე კახეთი</Title>
-          <Icons>
-            <Img1 src={facebook} />
-            <Img1 src={twitter} />
-            <Img1 src={instagram} />
-          </Icons>
-        </Info>
+      {posts.map((data: Post) => (
+            <Post key={data._id}>
+              <CoverImage src={displayImage(data.imageCover)} />
+              <Link style={line} to={`/news/${data._id}`}>
+              <Text>{data.name}</Text>
+              </Link>
+              {/* <video width="640" height="360" controls>
+                <source src={displayImage(data.videos)} type="video/mp4" />
+              </video> */}
+            </Post>
+          ))}
       </Container>
     </div>
   );
@@ -29,36 +67,42 @@ function Singlepost() {
 export default Singlepost;
 
 const Container = styled.div`
-  background-color: ${(props) => props.color || "gray"};
-`;
-const ImageWrapper = styled.div`
-  width: 100%;
-  height: 80%;
-  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  @media only screen and (min-width: 768px) {
+    gap: 10%;
+    align-items: left;
+    justify-content: flex-start;
+  }
+  @media only screen and (min-width: 1020px) {
+    gap: 5%;
+    align-items: left;
   }
 `;
 
-const Icons = styled.div`
-  display: flex;
-  gap: 10px;
+const CoverImage = styled.img`
+  width: 100%;
+  height: 350px;
 `;
 
-const Img1 = styled.img`
-  height: 20px;
-  width: 20px;
-  cursor: pointer;
+const Post = styled.div`
+  width: 100%;
+  margin-top: 50px;
+  @media only screen and (min-width: 768px) {
+    width: 45%;
+  }
+  @media only screen and (min-width: 1020px) {
+    width: 30%;
+  }
+  /* margin: auto; */
 `;
 
-const Title = styled.p``;
-
-const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 15px;
+const Text = styled.p`
+  font-family: bpg_ghalo;
+  color: #8b0909;
+  font-size: 20px;
+  margin-top: 15px;
 `;
+
