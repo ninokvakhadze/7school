@@ -4,17 +4,18 @@ import burgerImg from "../../assets/bars-solid.svg";
 import logo from "../../assets/logo-1.png";
 import { Link } from "react-router-dom";
 import HeaderComponent from "./header-nav";
-
+import { useLocation } from "react-router-dom";
 
 function Header() {
   const [open, setOpen] = useState(false);
   const [color, setColor] = useState<Number>(0);
+  const location = useLocation();
 
   const line = {
     textDecoration: "none",
   };
 
-  return (
+  return location.pathname !== "/login" ? (
     <>
       <WebPageHeader>
         <HeaderBottom>
@@ -28,7 +29,6 @@ function Header() {
             }}
           />
           <Nav primary={open.toString()}>
-    
             <UL>
               <Link onClick={() => setColor(1)} style={line} to="/news">
                 <HeaderComponent
@@ -86,11 +86,10 @@ function Header() {
         </HeaderBottom>
       </WebPageHeader>
     </>
-  );
+  ) : null;
 }
 
 export default Header;
-
 
 const WebPageHeader = styled.header``;
 

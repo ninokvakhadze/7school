@@ -2,9 +2,13 @@ import styled from "styled-components";
 import facebook from "../assets/facebook.svg";
 import linkdin from "../assets/linkedin.svg";
 import twitter from "../assets/twitter.svg";
+import { useLocation } from "react-router-dom";
 
 function Footer() {
-  return (
+  const location = useLocation();
+
+  
+  return location.pathname !== "/login" ? (
     <div>
       <Maincontainer>
         <Container>
@@ -42,7 +46,7 @@ function Footer() {
         </Create>
       </Container2>
     </div>
-  );
+  ) : null;
 }
 
 export default Footer;

@@ -8,6 +8,7 @@ import Footer from "./header-footer/footer";
 import Employees from "./employees/employees";
 import Contacts from "./contacts/contacts";
 import Singlepostfull from "./news/singlepostfull";
+import Login from "./login/login";
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<MainPage />} />
+          <Route path="/login" element={<Login/>}/>
           <Route path="/news" element={<News />} />
           <Route path="/news/post" element={<Singlepostfull />} />
           <Route path="/contact" element={<Contacts />} />
