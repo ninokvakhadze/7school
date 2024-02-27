@@ -9,6 +9,7 @@ import Employees from "./employees/employees";
 import Contacts from "./contacts/contacts";
 import Singlepostfull from "./news/singlepostfull";
 import Login from "./login/login";
+// import { useLocation } from "react-router-dom";
 function App() {
   return (
     <>
@@ -19,10 +20,10 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<Login/>}/>
           <Route path="/news" element={<News />} />
-          <Route path="/news/post" element={<Singlepostfull />} />
+          {/* <Route path="/news/post" element={<Singlepostfull />} /> */}
           <Route path="/contact" element={<Contacts />} />
           <Route path="/employees" element={<Employees />} />
-          <Route path="/news/65d39b36e9373f24112f4bc7" element={<Singlepostfull/>}/>
+          <Route path="/news/:id" element={<Singlepostfull />}/>
         </Routes>
         <Footer />
       </Router>
@@ -38,7 +39,9 @@ const GlobalStyles = createGlobalStyle`
   padding: 0px;
   box-sizing: border-box;
   }
-
+body{
+  /* background-color: #f2f2f2; */
+}
 
   @font-face {
   src: url(${GeorgianFont});

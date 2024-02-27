@@ -1,22 +1,49 @@
 import styled from "styled-components";
 import image from "../assets/example.png";
 import arrow from "../assets/arrow-red.svg";
+import { useParams } from "react-router-dom";
+import {useState, useEffect} from "react";
+import { Post } from "./singlepost";
 
 function Singlepostfull() {
+  const {id} =  useParams();
+  console.log(id)
+
+  const [posts, setPosts] = useState<Post>();
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/api/posts/${id}`);
+      const result = await response.json();
+      console.log(result.data.post);
+      setPosts(result.data.post);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const displayImage = (imageData: { contentType: String; data: String }) => {
+    return `data:${imageData ? imageData.contentType : ""};base64,${
+      imageData ? imageData.data : ""
+    }`;
+  };
+
+  console.log(posts)
+
   return (
     <>
       <FullPost>
-        <PostTitle>საქართველოს ულამაზესი კუთხე კახეთი</PostTitle>
+        {/* <PostTitle>{posts.name}</PostTitle> */}
         <PostText>
-          6ა და 6ბ კლასში (დამრ.ვ.ვოლჩანსკი და ლ.გაბისობია ) მასწავლებელი ნანა
-          გოგორიშვილი საქართველოს ერთერთი ულამაზესი კუთხის კახეთის შესწავლის
-          შემდეგ მოსწავლეებმა შექმნეს ძალიანი საინტერესო რეკლამები, პლაკატები,
-          ვივიდეორგოლები კახურ ღვინოზე და ყურძენზე . მადლობა ბავშვების ასეთი
-          აქტიურობისთვის და საინტერესო იდეებისთვის.
+          
         </PostText>
         <PostDiv>
           <Arrow1 src={arrow} />
-          <Image src={image} />
+          {/* <Image src={displayImage(posts.imageCover)} /> */}
           <Arrow2 src={arrow} />
         </PostDiv>
       </FullPost>
