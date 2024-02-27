@@ -2,12 +2,14 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-interface Post {
+
+export interface Post {
   _id: string;
   name: string;
   imageCover: string;
   text: string;
   videos: string;
+  posts: any
 }
 
 
