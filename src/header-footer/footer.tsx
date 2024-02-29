@@ -36,7 +36,7 @@ function Footer() {
           <Time>09:00 - 15:00 </Time>
         </Container1>
       </Maincontainer>
-      <Container2>
+      {/* <Container2>
         <Create>
           <span>© 2023</span>{" "}
           <div>
@@ -44,7 +44,7 @@ function Footer() {
             <span> Nino kvakhadze</span>
           </div>
         </Create>
-      </Container2>
+      </Container2> */}
     </div>
   ) : null;
 }
@@ -53,9 +53,8 @@ export default Footer;
 
 const Maincontainer = styled.div`
   width: 100%;
-  height: 500px;
   background-color: black;
-  padding: 60px 40px;
+  padding: 40px 4.5%;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -142,22 +141,22 @@ const Time = styled.p`
   font-family: bpg_ghalo;
 `;
 
-const Container2 = styled.div`
-  width: 100%;
-  height: 30px;
-  background-color: black;
-  border-top: 1px solid #575656;
-`;
+// const Container2 = styled.div`
+//   width: 100%;
+//   height: 30px;
+//   background-color: black;
+//   border-top: 1px solid #575656;
+// `;
 
-const Create = styled.p`
-  color: white;
-  opacity: 50%;
-  display: flex;
-  justify-content: space-between;
-  padding: 4px 20px;
-`;
+// const Create = styled.p`
+//   color: white;
+//   opacity: 50%;
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 4px 20px;
+// `;
 
-const Span = styled.span`
-  font-weight: 900;
-  font-size: 18px;
-`;
+// const Span = styled.span`
+//   font-weight: 900;
+//   font-size: 18px;
+// `;

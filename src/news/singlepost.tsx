@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 export interface Post {
   _id: string;
   name: string;
-  imageCover: string;
+  imageCover: { contentType: String; data: String };
   text: string;
   videos: string;
   posts: any
+  images: string;
 }
 
 

@@ -40,7 +40,7 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
   }
 body{
-  /* background-color: #f2f2f2; */
+  background-color: #f2f2f2;
 }
 
   @font-face {

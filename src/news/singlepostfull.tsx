@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import image from "../assets/example.png";
+// import image from "../assets/example.png";
 import arrow from "../assets/arrow-red.svg";
 import { useParams } from "react-router-dom";
 import {useState, useEffect} from "react";
@@ -26,7 +26,7 @@ function Singlepostfull() {
     fetchData();
   }, []);
 
-  const displayImage = (imageData: { contentType: String; data: String }) => {
+  const displayImage = (imageData: { contentType: String; data: String } | undefined) => {
     return `data:${imageData ? imageData.contentType : ""};base64,${
       imageData ? imageData.data : ""
     }`;
@@ -37,13 +37,13 @@ function Singlepostfull() {
   return (
     <>
       <FullPost>
-        {/* <PostTitle>{posts.name}</PostTitle> */}
+        <PostTitle>{posts?.name}</PostTitle>
         <PostText>
           
         </PostText>
         <PostDiv>
           <Arrow1 src={arrow} />
-          {/* <Image src={displayImage(posts.imageCover)} /> */}
+          <Image src={displayImage(posts?.imageCover)} />
           <Arrow2 src={arrow} />
         </PostDiv>
       </FullPost>

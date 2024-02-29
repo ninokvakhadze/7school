@@ -32,12 +32,12 @@ const LoginCard = styled.div`
   background-color: #fff;
 
   @media only screen and (min-width: 768px) {
-    margin: 10% 16%;
+    margin: 10% 26%;
     /* height: 400px; */
     border-radius: 6%;
     padding: 3%;
     @media only screen and (min-width: 1100px) {
-      margin: 6% 25%;
+      margin: 6% 35%;
       /* height: 500px; */
     }
     @media only screen and (min-width: 1400px) {
