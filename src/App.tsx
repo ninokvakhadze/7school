@@ -8,8 +8,7 @@ import Footer from "./header-footer/footer";
 import Employees from "./employees/employees";
 import Contacts from "./contacts/contacts";
 import Singlepostfull from "./news/singlepostfull";
-import Login from "./login/login";
-// import { useLocation } from "react-router-dom";
+
 function App() {
   return (
     <>
@@ -18,9 +17,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/login" element={<Login/>}/>
           <Route path="/news" element={<News />} />
-          {/* <Route path="/news/post" element={<Singlepostfull />} /> */}
           <Route path="/contact" element={<Contacts />} />
           <Route path="/employees" element={<Employees />} />
           <Route path="/news/:id" element={<Singlepostfull />}/>

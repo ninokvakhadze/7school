@@ -15,7 +15,7 @@ function Header() {
     textDecoration: "none",
   };
 
-  return location.pathname !== "/login" ? (
+  return location.pathname !== "/login" && location.pathname !== "/login/admin" ? (
     <>
       <WebPageHeader>
         <HeaderBottom>
