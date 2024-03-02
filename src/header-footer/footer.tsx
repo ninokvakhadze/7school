@@ -8,7 +8,7 @@ function Footer() {
   const location = useLocation();
 
   
-  return location.pathname !== "/login" ? (
+  return location.pathname !== "/login" && location.pathname !== "/login/admin"  ? (
     <div>
       <Maincontainer>
         <Container>
